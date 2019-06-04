@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Data
 @NoArgsConstructor
@@ -21,6 +22,7 @@ public class Room {
     @GeneratedValue
     private Long id;
 
+    @ManyToOne
     private Monster monster;
     private String story;
 
