@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/ai-service/ai-service.iml" filepath="$PROJECT_DIR$/ai-service/ai-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/gamebook.iml" filepath="$PROJECT_DIR$/.idea/gamebook.iml" />
       <module fileurl="file://$PROJECT_DIR$/main-service/main-service.iml" filepath="$PROJECT_DIR$/main-service/main-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server-registry/server-registry.iml" filepath="$PROJECT_DIR$/server-registry/server-registry.iml" />
     </modules>
   </component>
 </project>
