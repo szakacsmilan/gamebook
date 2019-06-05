@@ -13,4 +13,5 @@ public class DiceRollService {
         Random random = new Random();
         return random.nextInt(6) + 1;
     }
+
 }

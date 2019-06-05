@@ -5,6 +5,7 @@
     <title>gamebook</title>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="/js/turnjs4/lib/turn.js"></script>
+    <script type="text/javascript" src="/roll.js"> defer</script>
     <link rel="stylesheet" type="text/css" href="/css/game.css">
 </head>
 <body style="background:url('images/oldpage.jpg') no-repeat center; background-size: 100% auto">
@@ -18,6 +19,9 @@
     </div>
     <div class="hard"> The end </div>
 </div>
+
+<button type="button" id="rollButton" onclick="alert('Hello world!')">Roll with dice</button>
+<div id="rollNum">Bekakiltam</div>
 
 <script type="text/javascript">
     $("#flipbook").turn({
