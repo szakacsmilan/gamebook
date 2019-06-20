@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/fight")
 public class FightController {
-hps
+
     @Autowired
     private MonsterService monsterService;
 
