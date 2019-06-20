@@ -6,9 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ai-service" />
-        <module name="main-service" />
         <module name="server-registry" />
+        <module name="main-service" />
+        <module name="ai-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

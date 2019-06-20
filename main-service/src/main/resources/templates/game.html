@@ -5,33 +5,106 @@
     <title>gamebook</title>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="/js/turnjs4/lib/turn.js"></script>
-    <script type="text/javascript" src="/js/turnjs4/fight.js"></script>
-    <script type="text/javascript" src="/js/turnjs4/dice.js"></script>
+    <script type="text/javascript" src="/js/turnjs4/dice.js" defer></script>
     <link rel="stylesheet" type="text/css" href="/css/game.css">
 </head>
 <body style="background:url('images/oldpage.jpg') no-repeat center; background-size: 100% auto">
 
 
 <div id="flipbook" style="margin-left: 100px">
-    <div class="hard"> Lizard King </div>
-    <div class="old-page" th:each="room:${rooms}">
-        <div th:text="${room.getMonster()}"> Page 1 </div>
-        <div th:text="${room.getStory()}"> Page 2 </div>
+    <div class="hard"> A gyíkember szigete </div>
+    <div class="page"></div>
+    <div class="page"><h3>Háttértörténet</h3>
+        <br>
+        Az Osztriga-öböl nyugodt kis halászfalu úgy har-
+        minc kilométernyire a hírhedt Feketehomok Kikötő-
+        től délre, a tengerpart mentén. Mivel ez a hely egy
+        hosszú félsziget végében található, melyet csupán
+        egy meredek, kanyargós ösvényen lehet elérni, a
+        halászok és asszonyaik arra kényszerültek, hogy
+        az egyszerű emberek életét éljék itt, távol az or-
+        szág szörnyekkel és varázslatokkal teli életétől.
+        Fangtól déli irányban elindulva úgy döntesz, hogy
+        néhány napos pihenőt tartasz, és mivel nem is-
+        mersz nyugalmasabb helyet az Osztriga-öbölnél,
+        lovadat gyorsabb ügetésre ösztökéled a part men-
+        tén.
     </div>
-    <div class="hard"> The end </div>
+    <div class="old-page">
+        Széltől cserzett arca haragos. Meglepetten néz
+        rád, de nem köszönt. Elmeséli, milyen szomorúság
+        érte a faluját.Mivel nincs aranyuk, sem egyéb kincsük, az Oszt-
+        riga-öböl lakói soha nem érdekelték igazán a külső
+        támadókat. Néhány hete azonban, amikor a férfiak
+        kint voltak a vízen, a Tűzszigeti Gyíkemberek
+        zsákmányul ejtették néhány hajójukat, és több
+        fiatalembert elraboltak. Mungo szerint a foglyok
+        biztosan a Tűz-szigeten raboskodnak, és vasra
+        verve dolgoznak az aranybányában. Az emberrab-
+        lás óta két ember őrködik a faluban, míg a többiek
+        halásznak. Ennek ellenére a Gyíkemberek ma
+        reggel ismét támadtak, lefegyverezték az őröket,
+        és magukkal vittek még egy csapat fiatalembert.
+    </div>
+    <div class="old-page">
+        Mungo elmondja, nem hiszi, hogy laknának embe-
+        rek a Tűz-szigeten, bár ismeretei elég hiányosak.
+        Amit tud, az mind a partvidék többi településének
+        halászai között terjengő szóbeszéd. Azt is tudni
+        vélik, hogy a Tűz-sziget annak idején börtönsziget
+        volt, amelyet fizetett Gyíkemberek őriztek. Az Olaf
+        herceg eléggé hiábavaló kísérlete volt annak érde-
+        kében, hogy megszabadítsa országát a nemkívá-
+        natos elemektől. A jó herceg azonban hamarosan
+        rájött, hogy egyszerűbb lenne áttelepíteni hűséges
+        alattvalóit a Tűz-szigetre, és a szárazföldön hagyni
+        a gazembereket - ugyanis túl sok volt belőlük. Fel-
+        adta hát eredeti tervét, és felszámolta a börtönte-lepet. Amikor a Gyíkemberek nem kaptak fizetést,
+        bosszút álltak a foglyokon, és a sziget egy király-
+        nak kikiáltott.
+    </div>
+    <div class="old-page">
+        Torzszülöttek láttak napvilágot, és veszélyes folyadé-
+        kok kerültek a csatornarendszerbe. Ez rettenetes
+        következményekkel járt. A sziget növényzete és
+        állatvilága megváltozott: emberevő növények és
+        óriás szörnyek fejlődtek ki. Néhány fogolynak sike-
+        rült tutajon elmenekülnie a szigetről - ezeket a
+        halászok mentették meg és vitték ki a szárazföldre.
+        De hogy mi történt az elmúlt néhány és során, azt
+        senki sem tudja. A minapi támadásokig a Tűz-
+        szigetről már-már meg is feledkeztek. Kétséges,
+        hogy sikerül-e megölnöd a Gyíkkirályt és megmen-
+        tened az elrabolt áldozatokat, de meg kell próbál-
+        nod a lehetetlent.
+    </div>
+    <div class="hard"> Vége </div>
 </div>
+
 
 <!--<div class="dashboard" style="background-image:url('images/board.png'); max-width: 100%; height: 100%">-->
 <!--</div>-->
-<div class="input-group mb-3 dashboard">
-    <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">@</span>
+<div class="input-group mb-3 dashboard paper" id="instructions">
+
+    <div class="paper-head-name">
+        <h2 style="text-align: center">Játékos</h2>
+        <p>Név <input type="text" placeholder="Írd be a neved" style="width: 120px;text-align: center"></p>
+        <p>Élet <input type="text" style="width: 25px;text-align: center" placeholder="0"></p>
+        <p>Sebzés <input type="text" style="width: 25px;text-align: center" placeholder="0"></p>
+        <hr>
+        <h2 class="monster-head" style="text-align: center">Szörny</h2>
+        <p>Szörny neve <input type="text" placeholder="Szörny neve" style="width: 100px;text-align: center"></p>
+        <p>Élet <input type="text" style="width: 25px;text-align: center" placeholder="0"></p>
+        <p>Sebzés <input type="text" style="width: 25px;text-align: center" placeholder="0"></p>
+        <div class="dice">
+            <p id="placeholder">
+            </p>
+            <button id="button">Kocka dobás</button>
+        </div>
     </div>
-    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
 </div>
 
-<button type="button" id="rollButton" onclick="alert('Hello world!')">Roll with dice</button>
-<div id="rollNum">Bekakiltam</div>
+
 
 <script type="text/javascript">
     $("#flipbook").turn({
