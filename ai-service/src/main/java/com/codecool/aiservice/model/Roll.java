@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Roll{
-    private int result;
+    private Long result;
     private String dice;
 }

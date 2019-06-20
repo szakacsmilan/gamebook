@@ -9,9 +9,9 @@ import java.util.Random;
 @Service
 public class DiceRollService {
 
-    public int rollD6() {
+    public Long rollD6() {
         Random random = new Random();
-        return random.nextInt(6) + 1;
+        return Long.valueOf(random.nextInt(6) + 1);
     }
 
 }

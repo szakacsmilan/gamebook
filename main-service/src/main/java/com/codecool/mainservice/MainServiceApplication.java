@@ -65,7 +65,14 @@ public class MainServiceApplication {
                     .hp(12L)
                     .build();
 
-            monsterRepository.saveAll(Lists.newArrayList(lizard, spider, dragon));
+            Monster player = Monster.builder()
+                    .name("Player")
+                    .dmg(6L)
+                    .hp(30L)
+                    .build();
+
+
+            monsterRepository.saveAll(Lists.newArrayList(player, lizard, spider, dragon));
 
             Room room1 = Room.builder()
                     .monster(spider)

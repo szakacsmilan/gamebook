@@ -43,4 +43,14 @@ public class MonsterController {
         }
         return null;
     }
+
+    @GetMapping("/player")
+    public Monster player(){
+        for (Monster monster: monsterRepository.findAll()) {
+            if(monster.getName().equals("Player")){
+                return monster;
+            }
+        }
+        return null;
+    }
 }
