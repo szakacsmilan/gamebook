@@ -1,8 +1,10 @@
 body{
     overflow:hidden;
-    /*background: url('static/images/oldpage.jpg') !important;*/
+    background: url("../images/oldpage.jpg") no-repeat center;
+    background-size: 100% auto;
 
 }
+
 
 #flipbook{
     float: left;

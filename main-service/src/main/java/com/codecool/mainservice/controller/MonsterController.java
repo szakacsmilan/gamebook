@@ -37,7 +37,7 @@ public class MonsterController {
     @GetMapping("/lizard")
     public Monster lizard(){
         for (Monster monster: monsterRepository.findAll()) {
-            if(monster.getName().equals("Lizard")){
+            if(monster.getName().equals("LizardKing")){
                 return monster;
             }
         }

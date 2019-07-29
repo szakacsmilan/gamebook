@@ -48,9 +48,9 @@ public class MainServiceApplication {
         return args -> {
 
             Monster lizard = Monster.builder()
-                    .name("Lizard")
-                    .dmg(10L)
-                    .hp(10L)
+                    .name("LizardKing")
+                    .dmg(6L)
+                    .hp(100L)
                     .build();
 
             Monster spider = Monster.builder()
@@ -67,37 +67,12 @@ public class MainServiceApplication {
 
             Monster player = Monster.builder()
                     .name("Player")
-                    .dmg(6L)
-                    .hp(30L)
+                    .dmg(8L)
+                    .hp(100L)
                     .build();
 
 
             monsterRepository.saveAll(Lists.newArrayList(player, lizard, spider, dragon));
-
-            Room room1 = Room.builder()
-                    .monster(spider)
-                    .story("en kicsi pok")
-                    .build();
-
-            Room room2 = Room.builder()
-                    .story("szia itt nincs semmi")
-                    .build();
-
-            Room room3 = Room.builder()
-                    .monster(dragon)
-                    .story("en kicsi sarkanyom")
-                    .build();
-
-            Room room4 = Room.builder()
-                    .story("itt van egy hp")
-                    .build();
-
-            Room room5 = Room.builder()
-                    .monster(lizard)
-                    .story("szia en vagyok a gyikember")
-                    .build();
-
-            roomRepository.saveAll(Lists.newArrayList(room1, room2, room3, room4, room5));
 
         };
     }
