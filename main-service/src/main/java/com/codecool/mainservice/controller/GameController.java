@@ -50,7 +50,7 @@ public class GameController {
 
         model.addAttribute("monster", lizardKing);
         model.addAttribute("player", player);
-
+ 
         model.addAttribute("monsterdead", monsterHasHp);
         model.addAttribute("playerdead", playerHasHp);
 
