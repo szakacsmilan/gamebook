@@ -18,7 +18,7 @@ async function fight() {
             monster = json.hp;
             if(monster<0){
                 document.getElementById("isMonsterDead").innerHTML = "<p> Megölted a Gyík királyt! </p>";
-                button.style.visibility = hidden;
+                button.style.display = "none";
             }else{
                 monsterHp.innerText = monster;
             }
@@ -29,17 +29,12 @@ async function fight() {
             player = json.hp;
             if(player<0){
                 document.getElementById("isPlayerDead").innerHTML = "<p> Megholtal! </p>";
-                button.style.visibility = hidden;
+                button.style.display = "none";
             }else{
                 playerHp.innerText = player;
             }
         });
-    //
-    // if(monster<0){
-    //     document.getElementById("isMonsterDead").innerHTML = "<p> Megölted a Gyík királyt! </p>";
-    // }else{
-    //     monsterHp.innerText = monster;
-    // }
+
 
 }
 

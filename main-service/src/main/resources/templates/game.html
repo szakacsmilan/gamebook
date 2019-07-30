@@ -10,13 +10,12 @@
     <script type="text/javascript" src="/js/turnjs4/fight.js" defer></script>
 
 
-
 </head>
 <body>
 
 
 <div id="flipbook">
-    <div class="hard"> A gyíkember szigete </div>
+    <div class="hard"> A gyíkember szigete</div>
     <div class="page"></div>
     <div class="page"><h3>Háttértörténet</h3>
         <br>
@@ -92,32 +91,22 @@
     <div class="modal-content input-group mb-3 dashboard paper" id="instructions">
         <span class="close">&times;</span>
         <div class="paper-head-name">
-            <div th:switch="${playerdead}">
-                <h2 style="text-align: center">Játékos</h2>
-                <div id="isPlayerDead" th:case="true">
-                    <p>Név : <span   style="width: 120px;text-align: center"></span>Játékos</p>
-                    <p>Élet : <span id="playerHp" style="width: 25px;text-align: center" th:text="${player.getHp()}"></span></p>
-                    <p>Alapsebzés : <span style="width: 25px;text-align: center" th:text="${player.getDmg()}"></span></p>
-                </div>
-                <div th:case="false">
-                    <p> Meghaltál </p>
-                </div>
+            <h2 style="text-align: center">Játékos</h2>
+            <div id="isPlayerDead">
+                <p>Név : <span style="width: 120px;text-align: center"></span>Játékos</p>
+                <p>Élet : <span id="playerHp" style="width: 25px;text-align: center" th:text="${player.getHp()}"></span></p>
+                <p>Alapsebzés : <span style="width: 25px;text-align: center" th:text="${player.getDmg()}"></span></p>
             </div>
             <hr>
-            <div th:switch="${monsterdead}">
-                <h2 class="monster-head" style="text-align: center">Szörny</h2>
-                <div id="isMonsterDead" th:case="true">
-                    <p>Szörny neve : <span style="width: 100px;text-align: center" th:text="${monster.getName()}"></span></p>
-                    <p>Élet : <span id="monsterHp" style="width: 25px;text-align: center" th:text="${monster.getHp()}" ></span></p>
-                    <p>Alapsebzés : <span style="width: 25px;text-align: center" th:text="${monster.getDmg()}" ></span></p>
-                </div>
-                <div th:case="false">
-                    <p> Megölted a Gyík királyt! </p>
-                </div>
+            <h2 class="monster-head" style="text-align: center">Szörny</h2>
+            <div id="isMonsterDead">
+                <p>Szörny neve : <span style="width: 100px;text-align: center" th:text="${monster.getName()}"></span></p>
+                <p>Élet : <span id="monsterHp" style="width: 25px;text-align: center" th:text="${monster.getHp()}"></span></p>
+                <p>Alapsebzés : <span style="width: 25px;text-align: center" th:text="${monster.getDmg()}"></span></p>
             </div>
-                <div class="dice">
-                    <button id="button">Harc</button>
-                </div>
+            <div class="dice">
+                <button id="button">Harc</button>
+            </div>
         </div>
     </div>
 </div>
