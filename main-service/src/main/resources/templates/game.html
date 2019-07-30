@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>gamebook</title>
+    <link rel="stylesheet" type="text/css" href="/css/game.css">
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="/js/turnjs4/lib/turn.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/game.css">
+    <script type="text/javascript" src="/js/turnjs4/modal.js" defer></script>
+    <script type="text/javascript" src="/js/turnjs4/fight.js" defer></script>
+
+
+
 </head>
 <body>
 
 
-<div id="flipbook" style="margin-left: 100px">
+<div id="flipbook">
     <div class="hard"> A gyíkember szigete </div>
     <div class="page"></div>
     <div class="page"><h3>Háttértörténet</h3>
@@ -20,7 +25,7 @@
         től délre, a tengerpart mentén. Mivel ez a hely egy
         hosszú félsziget végében található, melyet csupán
         egy meredek, kanyargós ösvényen lehet elérni, a
-        halászok és asszonyaik arra kényszerültek, hogy
+        halászok és asszonyaik arra <a id="myBtn">Gyikember</a> kényszerültek, hogy
         az egyszerű emberek életét éljék itt, távol az or-
         szág szörnyekkel és varázslatokkal teli életétől.
         Fangtól déli irányban elindulva úgy döntesz, hogy
@@ -77,46 +82,45 @@
         tened az elrabolt áldozatokat, de meg kell próbál-
         nod a lehetetlent.
     </div>
-    <div class="hard"> Vége </div>
+    <div class="hard">The End</div>
 </div>
 
+<!-- The Modal -->
+<div id="myModal" class="modal">
 
-<!--<div class="dashboard" style="background-image:url('images/board.png'); max-width: 100%; height: 100%">-->
-<!--</div>-->
-<div class="input-group mb-3 dashboard paper" id="instructions">
-<!--/th:value="${player.hp}"-->
-    <div class="paper-head-name">
-        <div th:switch="${playerdead}">
-            <h2 style="text-align: center">Játékos</h2>
-            <div th:case="true">
-                <p>Név : <span   style="width: 120px;text-align: center"></span>Játékos</p>
-                <p>Élet : <span style="width: 25px;text-align: center" th:text="${player.getHp()}"></span></p>
-                <p>Alapsebzés : <span style="width: 25px;text-align: center" th:text="${player.getDmg()}"></span></p>
+    <!-- Modal content -->
+    <div class="modal-content input-group mb-3 dashboard paper" id="instructions">
+        <span class="close">&times;</span>
+        <div class="paper-head-name">
+            <div th:switch="${playerdead}">
+                <h2 style="text-align: center">Játékos</h2>
+                <div id="isPlayerDead" th:case="true">
+                    <p>Név : <span   style="width: 120px;text-align: center"></span>Játékos</p>
+                    <p>Élet : <span id="playerHp" style="width: 25px;text-align: center" th:text="${player.getHp()}"></span></p>
+                    <p>Alapsebzés : <span style="width: 25px;text-align: center" th:text="${player.getDmg()}"></span></p>
+                </div>
+                <div th:case="false">
+                    <p> Meghaltál </p>
+                </div>
             </div>
-            <div th:case="false">
-                <p> Meghaltál </p>
+            <hr>
+            <div th:switch="${monsterdead}">
+                <h2 class="monster-head" style="text-align: center">Szörny</h2>
+                <div id="isMonsterDead" th:case="true">
+                    <p>Szörny neve : <span style="width: 100px;text-align: center" th:text="${monster.getName()}"></span></p>
+                    <p>Élet : <span id="monsterHp" style="width: 25px;text-align: center" th:text="${monster.getHp()}" ></span></p>
+                    <p>Alapsebzés : <span style="width: 25px;text-align: center" th:text="${monster.getDmg()}" ></span></p>
+                </div>
+                <div th:case="false">
+                    <p> Megölted a Gyík királyt! </p>
+                </div>
             </div>
+                <div class="dice">
+                    <button id="button">Harc</button>
+                </div>
         </div>
-        <hr>
-        <div th:switch="${monsterdead}">
-        <h2 class="monster-head" style="text-align: center">Szörny</h2>
-            <div th:case="true">
-                <p>Szörny neve <span style="width: 100px;text-align: center" th:text="${monster.getName()}"></span></p>
-                <p>Élet : <span style="width: 25px;text-align: center" th:text="${monster.getHp()}" ></span></p>
-                <p>Alapsebzés : <span style="width: 25px;text-align: center" th:text="${monster.getDmg()}" ></span></p>
-            </div>
-            <div th:case="false">
-                <p> Megölted a Gyík királyt! </p>
-            </div>
-        </div>
-        <form action="/game" method="post">
-        <div class="dice">
-            <button id="button">Harc</button>
-        </div>
-        </form>
     </div>
 </div>
-
 
 
 <script type="text/javascript">

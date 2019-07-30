@@ -8,12 +8,14 @@ import com.codecool.mainservice.service.FightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 
+@CrossOrigin("http://localhost:9091")
 @Controller
 @RequestMapping
 public class GameController {
@@ -58,12 +60,11 @@ public class GameController {
     }
 
 
-    @PostMapping("/game")
+    @GetMapping("/fight")
     public String fight(){
 
         fightService.saveFightDetails();
-
-        return "redirect:/game";
+        return "game";
     }
 
 

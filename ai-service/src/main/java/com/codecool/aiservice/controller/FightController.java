@@ -6,14 +6,12 @@ import com.codecool.aiservice.model.Roll;
 import com.codecool.aiservice.service.DiceRollService;
 import com.codecool.aiservice.service.MonsterService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin("http://localhost:9090")
 @RestController
 @RequestMapping("/fight")
 public class FightController {
@@ -24,6 +22,9 @@ public class FightController {
     @Autowired
     private DiceRollService diceRollService;
 
+
+
+
     @GetMapping("/{monster}")
     public FightResult fight(@PathVariable("monster") String monster){
         Monster creature = monsterService.getMonster(monster);
@@ -33,6 +34,7 @@ public class FightController {
         Roll monsterRoll = new Roll(diceRollService.rollD6(), "D6");
         fightResult.setMonsterHp(creature.getHp() - heroRoll.getResult() - player.getDmg());
         fightResult.setPlayerHp(player.getHp() - monsterRoll.getResult() - creature.getDmg());
+
         return fightResult;
     }
 
