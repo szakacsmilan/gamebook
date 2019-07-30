@@ -1,8 +1,50 @@
-const Http = new XMLHttpRequest();
-const url='http://localhost:9091/figth/lizard';
-Http.open("GET", url);
-Http.send();
+let monsterHp = document.getElementById('monsterHp');
+let playerHp = document.getElementById('playerHp');
+let button = document.getElementById('button');
 
-Http.onreadystatechange = (e) => {
-    console.log(Http.responseText)
+button.addEventListener('click', fight);
+
+
+async function fight() {
+
+    await saveHp();
+
+    let monster;
+    let player;
+
+    fetch("http://localhost:9090/monster/lizard")
+        .then(res => res.json())
+        .then(json => {
+            monster = json.hp;
+            if(monster<0){
+                document.getElementById("isMonsterDead").innerHTML = "<p> Megölted a Gyík királyt! </p>";
+                button.style.visibility = hidden;
+            }else{
+                monsterHp.innerText = monster;
+            }
+    });
+    fetch("http://localhost:9090/monster/player")
+        .then(res => res.json())
+        .then(json => {
+            player = json.hp;
+            if(player<0){
+                document.getElementById("isPlayerDead").innerHTML = "<p> Megholtal! </p>";
+                button.style.visibility = hidden;
+            }else{
+                playerHp.innerText = player;
+            }
+        });
+    //
+    // if(monster<0){
+    //     document.getElementById("isMonsterDead").innerHTML = "<p> Megölted a Gyík királyt! </p>";
+    // }else{
+    //     monsterHp.innerText = monster;
+    // }
+
+}
+
+function saveHp() {
+
+    return fetch("http://localhost:9090/fight");
+
 }
